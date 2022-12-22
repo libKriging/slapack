@@ -13,8 +13,9 @@ file(GLOB LAPACK_SRC LAPACK/*.f)
 file(GLOB UTIL_SRC UTIL/*.f)
 set(FORTRAN_SRC ${BLAS_SRC} ${LAPACK_SRC} ${UTIL_SRC})
 
+# Generate position independent (aka -fPIC) code even for static libs
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_library(${PROJECT_NAME} STATIC ${FORTRAN_SRC})
-
 
 # créer des variables de cache pour les destinations d'installation
 include(GNUInstallDirs)
